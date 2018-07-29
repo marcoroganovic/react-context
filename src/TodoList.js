@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "./Context";
 
-const Ul = styled.ul`
+const Ol = styled.ol`
   width: 50%;
   margin: 20px auto;
   padding: 0;
-  list-style: none;
 
   li {
     padding: 10px;
@@ -24,7 +23,7 @@ const TodoList = ({ todos, removeTodo }) => {
     );
   });
 
-  return <Ul>{list}</Ul>;
+  return <Ol>{list}</Ol>;
 }
 
 export default connect(

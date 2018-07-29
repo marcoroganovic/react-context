@@ -4,10 +4,10 @@ import { connect } from "./Context";
 
 const StyledInput = styled.input`
   display: block;
-  width: 50%;
+  width: 30%;
   padding: 10px;
   font-size: 16px;
-  margin: 0 auto;
+  margin: 30px auto;
   outline: none;
   border: none;
   border-bottom: 1px solid #f0f0f0;
