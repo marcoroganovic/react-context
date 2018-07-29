@@ -5,7 +5,7 @@ const Context = createContext();
 class Provider extends Component {
   state = {
     newTodo: "",
-    toods: []
+    todos: []
   };
 
   addTodo = () => {
@@ -38,6 +38,26 @@ class Provider extends Component {
       </Context.Provider>
     )
   }
+}
+
+const connect = (mapStateToProps, mapMethodsToProps) => WrappedComponent => {
+  class ConnectedComponent extends Component {
+    render() {
+      return (
+        <Context.Consumer>
+          {context => {
+            return <WrappedComponent 
+              {...mapStateToProps(context.data)}
+              {...mapMethodsToProps(context.methods)}
+              {...this.props}
+            /> 
+          }}
+        </Context.Consumer>
+      )
+    }
+  }
+
+  return ConnectedComponent;
 }
 
 export {
