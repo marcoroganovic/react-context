@@ -5,7 +5,10 @@ const Context = createContext();
 class Provider extends Component {
   state = {
     newTodo: "",
-    todos: []
+    todos: [{
+      id: 1,
+      task: "Learn JavaScript Properly"
+    }]
   };
 
   addTodo = () => {

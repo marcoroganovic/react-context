@@ -23,8 +23,7 @@ const Input = ({ newTodo, handleChange }) => (
   />
 );
 
-export default connect((state) => ({
-  newTodo: state.newTodo,
-}), (methods) => ({
-  handleChange: methods.handleChange
-}))(Input);
+export default connect(
+  (state) => ({ newTodo: state.newTodo }), 
+  (methods) => ({ handleChange: methods.handleChange})
+)(Input);

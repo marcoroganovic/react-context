@@ -27,8 +27,7 @@ const TodoList = ({ todos, removeTodo }) => {
   return <Ul>{list}</Ul>;
 }
 
-export default connect((state) => ({
-  todos: state.todos
-}), (methods) => ({
-  removeTodo: methods.removeTodo
-}))(TodoList);
+export default connect(
+  (state) => ({ todos: state.todos }), 
+  (methods) => ({ removeTodo: methods.removeTodo })
+)(TodoList);
