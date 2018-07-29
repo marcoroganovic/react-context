@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createContext } from "react";
+import React, { Component, createContext } from "react";
 
 const Context = createContext();
 
@@ -13,7 +13,8 @@ class Provider extends Component {
       todos: [...prevState.todos, {
         id: prevState.todos.length + 1,
         task: prevState.newTodo
-      }]
+      }],
+      newTodo: ""
     }));
   }
 
@@ -25,13 +26,23 @@ class Provider extends Component {
     }
   }
 
+  handleChange = evt => {
+    if(evt.key === "Enter")
+      return this.addTodo();
+
+    const { value } = evt.target;
+    this.setState(prevState => ({
+      newTodo: value
+    }));
+  }
+
   render() {
     return (
       <Context.Provider value={{
         data: this.state,
         methods: {
-          addTodo: this.addTodo,
-          removeTodo: this.removeTodo
+          removeTodo: this.removeTodo,
+          handleChange: this.handleChange
         }
       }}>
         {this.props.children}
@@ -45,10 +56,10 @@ const connect = (mapStateToProps, mapMethodsToProps) => WrappedComponent => {
     render() {
       return (
         <Context.Consumer>
-          {context => {
+          {({ data, methods }) => {
             return <WrappedComponent 
-              {...mapStateToProps(context.data)}
-              {...mapMethodsToProps(context.methods)}
+              {...mapStateToProps(data)}
+              {...mapMethodsToProps(methods)}
               {...this.props}
             /> 
           }}
