@@ -13,6 +13,11 @@ const Container = styled.div`
     font-weight: 100;
     text-transform: uppercase;
   }
+
+  small {
+    display: block;
+    text-align: center;
+  }
 `;
 
 export default class App extends Component {
@@ -20,6 +25,7 @@ export default class App extends Component {
     return (
       <Container>
         <h1>Simple To-Do App</h1>
+        <small>Built using React's Context API</small>
         <Input />
         <TodoList />
       </Container>
