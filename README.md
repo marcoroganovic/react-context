@@ -1,1 +1,1 @@
-Experimental samle To-do application to learn React's new Context API.
+### Experimental sample To-do application to learn React's new Context API.
